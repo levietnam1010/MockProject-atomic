@@ -1,0 +1,43 @@
+.img-child {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin: 0px 20px;
+}
+
+.img {
+
+    width: 100%;
+    height: 100%;
+}
+
+.img-descri {
+    width: 20%;
+    height: 20%;
+}
+
+.checked {
+    color: orange;
+}
+
+.button-size {
+    margin: 10px;
+    width: 70px;
+    height: 50px;
+}
+
+.button {
+    margin: 15px 7px;
+    width: 100%;
+    border-radius: 17px;
+}
+
+.quantity {
+    margin: 15px 0px;
+}
+
+.icon-share {
+    height: 30px;
+    width: 30px;
+    margin: 0px 5px;
+}

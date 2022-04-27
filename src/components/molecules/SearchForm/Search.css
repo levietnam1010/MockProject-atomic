@@ -1,0 +1,10 @@
+.div-parent {
+    position: relative
+}
+
+.icon {
+    right: 1%;
+    bottom: 25%;
+    position: absolute;
+    color: blue
+}

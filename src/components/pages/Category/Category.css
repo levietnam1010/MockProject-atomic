@@ -1,0 +1,167 @@
+.main {
+    background-color: red;
+}
+
+.content-page {
+    position: absolute;
+    top: 10%;
+    left: 18%;
+    color: white;
+    text-align: center
+}
+
+.description {
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+.product {
+    position: relative;
+}
+
+.sale {
+    position: absolute;
+    background-color: red;
+    left: 25%;
+    top: 1%;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #F0F8FF
+}
+
+
+
+.product img {
+    width: 100%;
+}
+
+.top-head {
+    margin: 10px 0px;
+    padding: 5px 0px;
+}
+
+
+
+.heart {
+    position: absolute;
+    top: 5%
+}
+
+.display-heart {
+    position: absolute;
+    top: 5%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.term {
+    margin-top: 30px;
+}
+
+.box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    border: 1px solid black;
+
+}
+
+.description-child {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.white {
+    background-color: white;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.black {
+    background-color: black;
+}
+
+.AliceBlue {
+    background-color: FAEBD7;
+}
+
+.Aqua {
+    background-color: #F0F8FF;
+}
