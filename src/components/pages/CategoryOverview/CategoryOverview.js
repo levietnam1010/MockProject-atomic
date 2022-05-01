@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './CategoryOverview.css'
 import axios from "axios";
-
+import Pagination from '../../molecules/Pagination/Pagination';
 import { Link } from 'react-router-dom';
 const CategoryOverview = (props) => {
 
@@ -54,6 +54,20 @@ const CategoryOverview = (props) => {
     const [current_products, setCurrent_products] = useState(products)
     const [link, setLink] = useState()
 
+    const [pagination, setPagination] = useState({
+        page: 1,
+        limit: 8,
+        totalRow: 10,
+    })
+
+    const handlePageChange = (newPage) => {
+        console.log('new page', newPage)
+    }
+
+
+
+
+
     useEffect(() => {
         setQuantityProduct(current_products.length)
 
@@ -65,10 +79,6 @@ const CategoryOverview = (props) => {
         current_products_list = current_products_list.filter(product => product.idCategory === idCategory)
 
         setCurrent_products(current_products_list)
-
-
-
-
     }
 
 
@@ -87,11 +97,12 @@ const CategoryOverview = (props) => {
 
                         {category.map(item => {
                             return (
+
                                 <div className='col-sm-2 top-category' key={item.id}>
-
-                                    <img src={item.imageCategory}></img>
-                                    <Link to={`/category/cid=${item.id}`} onClick={() => props.handleViewCategory(item)}>  <span className='top-category-child'>{item.nameCategory}</span></Link>
-
+                                    <Link to={`/category/cid=${item.idCategory}`} >
+                                        <img alt={item.nameCategory} src={item.imageCategory}></img>
+                                        <span className='top-category-child'>{item.nameCategory}</span>
+                                    </Link>
                                 </div>
                             )
                         })}
@@ -135,7 +146,12 @@ const CategoryOverview = (props) => {
                                     </select>
 
                                 </div>
-                                <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}><i className="fas fa-angle-left"></i> 1/30   <i className="fas fa-angle-right"></i></div>
+                                <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}>
+                                    <Pagination
+                                        pagination={pagination}
+                                        onPageChange={handlePageChange}
+                                    ></Pagination>
+                                </div>
                             </div>
                         </div>
 
@@ -144,7 +160,7 @@ const CategoryOverview = (props) => {
                             {current_products.map(item => {
                                 return (
                                     <div className='col-sm-3' key={item.id}>
-                                        <img src={item.imageProduct}></img>
+                                        <Link to={`/productID=${item.id}`}>  <img alt={item.nameCategory} src={item.imageProduct}></img> </Link>
                                         <div>
                                             <h4>{item.nameProduct}</h4>
                                             <p>{item.price}</p>

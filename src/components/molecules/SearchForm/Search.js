@@ -3,7 +3,7 @@ import './Search.css'
 
 const Search = () => {
     return (
-        <div>
+        <div >
 
             <form className="d-flex div-parent" >
                 <div>

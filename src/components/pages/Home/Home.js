@@ -31,7 +31,7 @@ const Home = () => {
 
             <div className='container-fluid container-child' >
                 <div className=" col-sm-4">
-                    <img src='https://images.unsplash.com/photo-1483181957632-8bda974cbc91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBzaG9wcGluZ3xlbnwwfHwwfHw%3D&w=1000&q=80'></img>
+                    <img alt='shopping' src='https://images.unsplash.com/photo-1483181957632-8bda974cbc91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBzaG9wcGluZ3xlbnwwfHwwfHw%3D&w=1000&q=80'></img>
 
                     <div className='content'>
                         <h4>Let The BreeZe In</h4>
@@ -41,7 +41,7 @@ const Home = () => {
 
                 </div>
                 <div className="col-sm-4">
-                    <img src='https://media.istockphoto.com/photos/young-women-with-shopping-bags-standing-on-the-street-picture-id1148923865?k=20&m=1148923865&s=612x612&w=0&h=ZHYJouMQbc2IBY-Drk7y-cMd3zvSAKGHywj8ny-KBqU='></img>
+                    <img alt='shopping' src='https://media.istockphoto.com/photos/young-women-with-shopping-bags-standing-on-the-street-picture-id1148923865?k=20&m=1148923865&s=612x612&w=0&h=ZHYJouMQbc2IBY-Drk7y-cMd3zvSAKGHywj8ny-KBqU='></img>
 
                     <div className='content'>
                         <h4>The Curvy '90s Cheeky Jean</h4>
@@ -50,7 +50,7 @@ const Home = () => {
 
                 </div>
                 <div className="col-sm-4">
-                    <img src='https://media.istockphoto.com/photos/modern-young-man-enjoying-in-shopping-consumerism-lifestyle-concept-picture-id1170183686?k=20&m=1170183686&s=612x612&w=0&h=hrHZY9SqNxy54Tb1q31dkSBN6e4cDHXk8OOscd3Jejw='></img>
+                    <img alt='shopping' src='https://media.istockphoto.com/photos/modern-young-man-enjoying-in-shopping-consumerism-lifestyle-concept-picture-id1170183686?k=20&m=1170183686&s=612x612&w=0&h=hrHZY9SqNxy54Tb1q31dkSBN6e4cDHXk8OOscd3Jejw='></img>
                     <div className='content'>
                         <h4>Introducing Track</h4>
                         A collection of premium organic pieces--<br></br>made for the track ahead.

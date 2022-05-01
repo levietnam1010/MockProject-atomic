@@ -1,8 +1,10 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './Category.css'
 import { MenuItem, InputLabel, Select, FormControl } from '@mui/material'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const products_json = [
     { id: 1, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://projectrunway.com.vn/Uploads/images/th%E1%BB%9Di%20trang%20n%E1%BB%AF%20c%C3%B4ng%20s%E1%BB%9F/thoi-trang-cong-so-nu-cao-cap.jpg' },
     { id: 2, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://danangsale.vn/uploads/images/quan-ao-thoi-trang-nu-tai-da-nang(26).jpg' },
@@ -20,9 +22,54 @@ const products_json = [
 ]
 
 const Category = (props) => {
+    let { id } = useParams();
+
+
+    let productsList = products_json.filter(product => product.idCategory == id);
+
+    const [searchTerms, setSearchTerm] = useState([])
+    const [term, setTerm] = useState("")
+    const [heart, setHeart] = useState(false)
+    const [hideHeart, setHideHeart] = useState(true)
+
+
+
+
+    const handleAddSearchTerm = (e) => {
+        if (e.keyCode === 13) {
+            let term = { id: searchTerms.length, term: e.target.value }
+            setSearchTerm(
+                [...searchTerms, term]
+            )
+            setTerm("")
+        }
+
+    }
+
+    const handleDeleteTerm = (term) => {
+        setSearchTerm(
+            searchTerms.filter(item => item.id !== term.id)
+        )
+    }
+
+
+
+
+    const handleDisplayHeart = () => {
+
+        setHideHeart(!hideHeart)
+        setHeart(!heart)
+    }
+
+    const handleHideHeart = () => {
+        console.log('check hide')
+        setHideHeart(!hideHeart)
+        setHeart(!heart)
+    }
+
     return (
         <>
-            <div className="main">
+            <div className="header">
                 <Nav></Nav>
 
             </div>
@@ -34,16 +81,23 @@ const Category = (props) => {
                         </div>
 
                         <div className='term'>
-                            <button className='btn btn-light btn-sm'>Art     <i className="fas fa-times"></i></button> <button className='btn btn-light btn-sm' >Womens <i className="fas fa-times"></i></button>
-                            <button className='btn btn-light btn-sm'>Art     <i className="fas fa-times"></i></button> <button className='btn btn-light btn-sm' >Womens <i className="fas fa-times"></i></button>
-                            <button className='btn btn-light btn-sm'>Art     <i className="fas fa-times"></i></button> <button className='btn btn-light btn-sm' >Womens <i className="fas fa-times"></i></button>
+
+                            {searchTerms.map((item) => {
+                                return (
+                                    <button className='btn btn-light btn-sm' key={item.id} >{item.term}     <i className="fas fa-times" onClick={() => handleDeleteTerm(item)}></i></button>
+                                )
+                            })}
+
 
                         </div>
 
-                        <div className='term' style={{ position: 'relative' }}>
-                            <input className='form-control' placeholder='Add search term...'  ></input>
-                            <i className="fas fa-search" style={{ position: 'absolute', top: '10%', right: '1%' }}></i>
-                            <button className='btn btn-danger' style={{ margin: '15px' }}>Clear all</button>
+                        <div className='term' >
+                            <input className='form-control' placeholder='Add search term...' value={term} onChange={(e) => setTerm(e.target.value)}
+                                onKeyDown={(e) => handleAddSearchTerm(e)}></input>
+                            <i className="fas fa-search icon-search" ></i>
+
+                            <button className='btn btn-danger' style={{ margin: '15px' }} onClick={(e) => setSearchTerm([])}>Clear all</button>
+
                         </div>
 
                         <div className='term'>
@@ -76,53 +130,44 @@ const Category = (props) => {
                     <div className='col-sm-10'>
                         <div className='row'>
                             <div className="d-flex justify-content-around top-head">
-                                <div> <h6>Results : <span style={{ color: 'red' }}> 127 products</span></h6>  </div>
+                                <div> <h6>Results : <span style={{ color: 'red' }}> {productsList.length} products</span></h6>  </div>
 
                                 <div> <i className="fas fa-align-justify"></i> <i className="fas fa-th"></i>
 
                                 </div>
                                 <div >
 
-                                    <FormControl>
-                                        <InputLabel id="demo-simple-select-label">Sort</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value=''
-                                            label="Age"
-                                            onChange=''
-                                        >
-                                            <MenuItem value={10}>BEST SELLERS</MenuItem>
-                                            <MenuItem value={20}>HIGH VOTES</MenuItem>
-                                            <MenuItem value={30}>DISCOUNT</MenuItem>
-                                        </Select>
-                                    </FormControl>
+
 
                                 </div>
                             </div>
                         </div>
                         <div className='row'>
-                            <div className='col-sm-3 product border border-primary'>
 
 
-                                {props.category && products_json.filter(item => item.idCategory === props.category.idCategory).map(product => {
-                                    return (
-                                        <div className='description' >
-                                            <i className="fas fa-heart heart"></i> <i className="far fa-heart display-heart"></i>
-                                            <img src='https://sandro.com.vn/media/catalog/product/cache/29162ccbe9d79568e67e3d26712ec350/s/a/sandro_sfpro01937-20_v_1.jpg'></img>
-                                            <h6>{product.nameProduct}</h6>
-                                            <div className='description-child'>
-                                                <h6>  More color : </h6>
-                                                <div className='box yellow'></div>
-                                                <div className='box black'></div>
-                                            </div>
-                                            <div className='description-child'> <h6>{product.price} </h6> </div>
+
+                            {productsList.map(product => {
+                                return (
+                                    <div className='description col-sm-2 product' key={product.id} >
+
+                                        <i className={`fas fa-heart heart ${heart ? 'disabled' : ''}`} onClick={() => handleDisplayHeart()}></i>
+                                        <i className={`fas fa-heart hide-heart ${hideHeart ? 'disabled' : ''}`} onClick={() => handleHideHeart()}></i>
+                                        <Link to={`/productID=${product.id}`}>     <img alt={product.nameProduct} src={product.imageProduct}></img>
+                                            <h6>{product.nameProduct}</h6></Link>
+
+
+                                        <div className='description-child'>
+                                            <h6>  More color : </h6>
+                                            <div className='box yellow'></div>
+                                            <div className='box black'></div>
                                         </div>
-                                    )
-                                })}
+                                        <div className='description-child'> <h6>{product.price} </h6> </div>
+                                    </div>
+                                )
+                            })}
 
 
-                            </div>
+
 
                         </div>
 
