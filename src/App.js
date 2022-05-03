@@ -6,13 +6,14 @@ import Home from './components/pages/Home/Home';
 import CategoryOverview from './components/pages/CategoryOverview/CategoryOverview';
 import Category from './components/pages/Category/Category';
 import Product from './components/pages/Product/Product';
+import Footer from './components/molecules/Footer/Footer';
 
 
 function App() {
   return (
     <div className="container-fluid">
 
-
+      <Footer />
       {/* <Home></Home> */}
       {/* <CategoryOverview></CategoryOverview> */}
       {/* <Category></Category> */}
