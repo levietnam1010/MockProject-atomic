@@ -56,7 +56,7 @@ const Category = (props) => {
 
 
     const handleDisplayHeart = () => {
-
+        console.log('display heart')
         setHideHeart(!hideHeart)
         setHeart(!heart)
     }
@@ -150,8 +150,8 @@ const Category = (props) => {
                                 return (
                                     <div className='description col-sm-2 product' key={product.id} >
 
-                                        <i className={`fas fa-heart heart ${heart ? 'disabled' : ''}`} onClick={() => handleDisplayHeart()}></i>
-                                        <i className={`fas fa-heart hide-heart ${hideHeart ? 'disabled' : ''}`} onClick={() => handleHideHeart()}></i>
+                                        <i className={'fas fa-heart heart'} hidden={heart} onClick={() => handleDisplayHeart()}></i>
+                                        <i className={'fas fa-heart hide-heart'} hidden={hideHeart} onClick={() => handleHideHeart()}></i>
                                         <Link to={`/productID=${product.id}`}>     <img alt={product.nameProduct} src={product.imageProduct}></img>
                                             <h6>{product.nameProduct}</h6></Link>
 

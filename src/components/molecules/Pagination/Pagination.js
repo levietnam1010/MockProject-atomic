@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 Pagination.propTypes = {
     pagination: PropTypes.object.isRequired,
@@ -13,7 +15,7 @@ Pagination.defaultProps = {
 
 function Pagination(props) {
 
-    const { pagination, onPageChange } = props
+    const { pagination, onPageChange, currentPage } = props
     const { page, limit, totalRow } = pagination
     const totalPage = Math.ceil(totalRow / limit)
 
@@ -26,7 +28,10 @@ function Pagination(props) {
 
     return (
         <div>
-            <i className="fas fa-angle-left" disable={page <= 1} onClick={() => handlePageChange(page - 1)}></i> {page}/{totalPage}   <i className="fas fa-angle-right" disable={page >= totalPage} onClick={() => handlePageChange(page + 1)}></i>
+            <ArrowBackIosIcon disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)} />
+            {currentPage}/{totalPage}
+            <ArrowForwardIosIcon disabled={currentPage >= totalPage} onClick={() => handlePageChange(currentPage + 1)} />
+
         </div>
     );
 }

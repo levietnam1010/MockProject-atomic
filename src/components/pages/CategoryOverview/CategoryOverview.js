@@ -4,6 +4,11 @@ import './CategoryOverview.css'
 import axios from "axios";
 import Pagination from '../../molecules/Pagination/Pagination';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+
+
 const CategoryOverview = (props) => {
 
 
@@ -48,21 +53,29 @@ const CategoryOverview = (props) => {
 
 
 
-
+    const [sortSelectBox, setSortSelect] = useState()
     const [category, setCategory] = useState(data)
     const [products, setProducts] = useState(products_json)
     const [current_products, setCurrent_products] = useState(products)
-    const [link, setLink] = useState()
+    const [dropDownCheck, setDropDownCheck] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
+
+
 
     const [pagination, setPagination] = useState({
-        page: 1,
-        limit: 8,
-        totalRow: 10,
+        page: currentPage,
+        limit: 4,
+        totalRow: current_products.length ? current_products.length : 1,
     })
 
+
+
+
     const handlePageChange = (newPage) => {
-        console.log('new page', newPage)
+        setCurrentPage(newPage)
+
     }
+
 
 
 
@@ -70,8 +83,22 @@ const CategoryOverview = (props) => {
 
     useEffect(() => {
         setQuantityProduct(current_products.length)
+        setPagination({ page: currentPage, limit: 4, totalRow: current_products.length ? current_products.length : 1 })
 
+        setCurrentPage(1)
     }, [current_products]);
+
+
+
+
+    useEffect(() => {
+        if (sortSelectBox === 'price') {
+
+        }
+    }, [sortSelectBox])
+
+
+
     const handleClickCategory = (idCategory) => {
 
         let current_products_list = products
@@ -79,6 +106,13 @@ const CategoryOverview = (props) => {
         current_products_list = current_products_list.filter(product => product.idCategory === idCategory)
 
         setCurrent_products(current_products_list)
+
+    }
+
+
+
+    const handleDropdownList = () => {
+        setDropDownCheck(!dropDownCheck)
     }
 
 
@@ -117,10 +151,12 @@ const CategoryOverview = (props) => {
                         <h3>Browse by : </h3>
                         <hr></hr>
                         <ul className='nav flex-column'>
-                            <a style={{ textDecoration: 'underline' }} href="#">All Category...</a>
+
+                            <Link to={'/category'}> <Button variant="contained" endIcon={dropDownCheck ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={() => handleDropdownList()}>All Category...</Button> </Link>
+
                             <li>--</li>
                             {/* map category o day */}
-                            {category.map(item => { return (<li className='nav-item' key={item.id} onClick={() => handleClickCategory(item.idCategory)} >{item.nameCategory}</li>) })}
+                            {dropDownCheck && category.map(item => { return (<li className='nav-item' key={item.id} onClick={() => handleClickCategory(item.idCategory)} >{item.nameCategory}</li>) })}
 
 
 
@@ -139,15 +175,16 @@ const CategoryOverview = (props) => {
                                 </div>
                                 <div className="p-3 bd-highlight">
 
-                                    <select className="form-select form-select-sm">
-                                        <option value="1">Feature</option>
-                                        <option value="2">Price</option>
-                                        <option value="3">Rated</option>
+                                    <select className="form-select form-select-sm" value={sortSelectBox} onChange={(e) => setSortSelect(e.target.value)}>
+                                        <option value="feature">Feature</option>
+                                        <option value="price">Price</option>
+                                        <option value="rate">Rated</option>
                                     </select>
 
                                 </div>
                                 <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}>
                                     <Pagination
+                                        currentPage={currentPage}
                                         pagination={pagination}
                                         onPageChange={handlePageChange}
                                     ></Pagination>
