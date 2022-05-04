@@ -5,7 +5,7 @@ import React from 'react'
 import { Routes, NavLink } from 'react-router-dom';
 import '../Nav/Nav.css'
 import Search from '../SearchForm/Search';
-
+import Cart from '../CartForm/Cart';
 
 
 
@@ -55,6 +55,11 @@ const Nav = () => {
                         <ul className="navbar-nav">
                             <Search></Search>
                         </ul>
+                        <ul className="navbar-nav">
+                            <Cart></Cart>
+                        </ul>
+
+
 
 
                         <ul className="navbar-nav">

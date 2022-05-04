@@ -6,7 +6,7 @@ import Home from './components/pages/Home/Home';
 import CategoryOverview from './components/pages/CategoryOverview/CategoryOverview';
 import Category from './components/pages/Category/Category';
 import Product from './components/pages/Product/Product';
-
+import Cart from './components/pages/Cart/Cart';
 
 function App() {
   return (
@@ -21,8 +21,9 @@ function App() {
       <Routes>
         <Route path='*' element={<Home></Home>}></Route>
         <Route path='/category' element={<CategoryOverview ></CategoryOverview>} exact={true}></Route>
-        <Route path={`/category/*`} element={<Category></Category>}></Route>
-        <Route path='/product' element={<Product ></Product>} exact={true}></Route>
+        <Route path={`/category/cid=:id`} element={<Category></Category>}></Route>
+        <Route path='/productID=:id' element={<Product ></Product>} exact={true}></Route>
+        <Route path='/cart' element={<Cart ></Cart>}></Route>
       </Routes>
 
     </div>

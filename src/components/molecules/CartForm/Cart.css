@@ -1,0 +1,22 @@
+.number-cart {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #0F1C3F;
+    border-radius: 50%;
+    background-color: rgb(204, 184, 184);
+    position: relative;
+}
+
+.cart {
+
+    background-color: white;
+    margin: 10px;
+    height: 35px;
+    color: black;
+}
+
+.number {
+    position: absolute;
+    top: 1%;
+    left: 30%;
+}

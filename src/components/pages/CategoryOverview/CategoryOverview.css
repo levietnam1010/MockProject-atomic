@@ -17,6 +17,7 @@ ul li {
 
 .top-category {
     position: relative;
+    transition: all 0.5s ease;
 
 }
 
@@ -30,8 +31,9 @@ ul li {
 }
 
 .top-category :hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 
-    border: solid 1px blue;
 }
 
 .body {

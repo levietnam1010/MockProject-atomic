@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './CategoryOverview.css'
 import axios from "axios";
-
+import Pagination from '../../molecules/Pagination/Pagination';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+
+
 const CategoryOverview = (props) => {
 
 
@@ -48,16 +53,52 @@ const CategoryOverview = (props) => {
 
 
 
-
+    const [sortSelectBox, setSortSelect] = useState()
     const [category, setCategory] = useState(data)
     const [products, setProducts] = useState(products_json)
     const [current_products, setCurrent_products] = useState(products)
-    const [link, setLink] = useState()
+    const [dropDownCheck, setDropDownCheck] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
+
+
+
+    const [pagination, setPagination] = useState({
+        page: currentPage,
+        limit: 4,
+        totalRow: current_products.length ? current_products.length : 1,
+    })
+
+
+
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage)
+
+    }
+
+
+
+
+
 
     useEffect(() => {
         setQuantityProduct(current_products.length)
+        setPagination({ page: currentPage, limit: 4, totalRow: current_products.length ? current_products.length : 1 })
 
+        setCurrentPage(1)
     }, [current_products]);
+
+
+
+
+    useEffect(() => {
+        if (sortSelectBox === 'price') {
+
+        }
+    }, [sortSelectBox])
+
+
+
     const handleClickCategory = (idCategory) => {
 
         let current_products_list = products
@@ -66,9 +107,12 @@ const CategoryOverview = (props) => {
 
         setCurrent_products(current_products_list)
 
+    }
 
 
 
+    const handleDropdownList = () => {
+        setDropDownCheck(!dropDownCheck)
     }
 
 
@@ -87,11 +131,12 @@ const CategoryOverview = (props) => {
 
                         {category.map(item => {
                             return (
+
                                 <div className='col-sm-2 top-category' key={item.id}>
-
-                                    <img src={item.imageCategory}></img>
-                                    <Link to={`/category/cid=${item.id}`} onClick={() => props.handleViewCategory(item)}>  <span className='top-category-child'>{item.nameCategory}</span></Link>
-
+                                    <Link to={`/category/cid=${item.idCategory}`} >
+                                        <img alt={item.nameCategory} src={item.imageCategory}></img>
+                                        <span className='top-category-child'>{item.nameCategory}</span>
+                                    </Link>
                                 </div>
                             )
                         })}
@@ -106,10 +151,12 @@ const CategoryOverview = (props) => {
                         <h3>Browse by : </h3>
                         <hr></hr>
                         <ul className='nav flex-column'>
-                            <a style={{ textDecoration: 'underline' }} href="#">All Category...</a>
+
+                            <Link to={'/category'}> <Button variant="contained" endIcon={dropDownCheck ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />} onClick={() => handleDropdownList()}>All Category...</Button> </Link>
+
                             <li>--</li>
                             {/* map category o day */}
-                            {category.map(item => { return (<li className='nav-item' key={item.id} onClick={() => handleClickCategory(item.idCategory)} >{item.nameCategory}</li>) })}
+                            {dropDownCheck && category.map(item => { return (<li className='nav-item' key={item.id} onClick={() => handleClickCategory(item.idCategory)} >{item.nameCategory}</li>) })}
 
 
 
@@ -128,14 +175,20 @@ const CategoryOverview = (props) => {
                                 </div>
                                 <div className="p-3 bd-highlight">
 
-                                    <select className="form-select form-select-sm">
-                                        <option value="1">Feature</option>
-                                        <option value="2">Price</option>
-                                        <option value="3">Rated</option>
+                                    <select className="form-select form-select-sm" value={sortSelectBox} onChange={(e) => setSortSelect(e.target.value)}>
+                                        <option value="feature">Feature</option>
+                                        <option value="price">Price</option>
+                                        <option value="rate">Rated</option>
                                     </select>
 
                                 </div>
-                                <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}><i className="fas fa-angle-left"></i> 1/30   <i className="fas fa-angle-right"></i></div>
+                                <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}>
+                                    <Pagination
+                                        currentPage={currentPage}
+                                        pagination={pagination}
+                                        onPageChange={handlePageChange}
+                                    ></Pagination>
+                                </div>
                             </div>
                         </div>
 
@@ -144,7 +197,7 @@ const CategoryOverview = (props) => {
                             {current_products.map(item => {
                                 return (
                                     <div className='col-sm-3' key={item.id}>
-                                        <img src={item.imageProduct}></img>
+                                        <Link to={`/productID=${item.id}`}>  <img alt={item.nameCategory} src={item.imageProduct}></img> </Link>
                                         <div>
                                             <h4>{item.nameProduct}</h4>
                                             <p>{item.price}</p>

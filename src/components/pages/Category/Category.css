@@ -1,5 +1,10 @@
-.main {
+.header {
     background-color: red;
+}
+
+.category-div {
+    background-color: rgb(237, 247, 210);
+    height: 1000px;
 }
 
 .content-page {
@@ -18,6 +23,20 @@
 
 .product {
     position: relative;
+    margin: 10px;
+    transition: all 0.1s ease;
+    border-radius: 17px;
+    border: double red;
+    background-color: #a4b9d8;
+}
+
+.product img:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 10px rgba(1, 0, 0, 1);
+}
+
+.product img {
+    margin-top: 50px;
 }
 
 .sale {
@@ -34,7 +53,12 @@
 
 .product img {
     width: 100%;
+
 }
+
+
+
+
 
 .top-head {
     margin: 10px 0px;
@@ -45,12 +69,29 @@
 
 .heart {
     position: absolute;
-    top: 5%
+    top: 2%;
+    font-size: 30px;
+    color: red;
 }
 
-.display-heart {
+.hide-heart {
     position: absolute;
-    top: 5%
+    top: 2%;
+    font-size: 30px;
+    color: white;
+
+}
+
+.term {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.icon-search {
+    position: absolute;
+    top: 10%;
+    right: 1%;
+
 }
 
 
