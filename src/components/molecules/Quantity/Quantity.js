@@ -9,9 +9,15 @@ const Quantity = (props) => {
         props.quantity(quantity)
     }, [quantity])
 
+
+
+
     const inputChangedHandler = () => {
 
     }
+
+
+
     return (
         <div className="d-flex quantity">
             <button className='btn btn-light' onClick={() => setQuantity(quantity - 1)}><i className="fas fa-minus"></i></button>

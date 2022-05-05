@@ -13,3 +13,4 @@ export const deleteProductFromCart = (product) => {
         payload: product
     }
 }
+

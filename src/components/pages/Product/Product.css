@@ -39,3 +39,12 @@
     width: 30px;
     margin: 0px 5px;
 }
+
+
+.quantity {
+    margin: 15px 0px;
+}
+
+.input-quantity {
+    width: 20%;
+}

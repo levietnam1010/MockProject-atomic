@@ -13,14 +13,28 @@ const Cart = () => {
 
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
+
+
+
     const [quantity, setQuantity] = useState(1)
 
-    const handleChangeQuantity = (quantity) => {
-        setQuantity(quantity)
-    }
+
+
     const handleDeleteProduct = (product) => {
         dispatch(deleteProductFromCart(product))
     }
+
+
+
+
+
+    const inputChangedHandler = () => {
+
+    }
+
+
+
+
 
 
     return (
@@ -51,14 +65,27 @@ const Cart = () => {
                                         <th scope="row"><Checkbox></Checkbox></th>
                                         <td> <img src={item.imageProduct}></img> <NavLink to={`/productID=${item.id}`}>{item.nameProduct}</NavLink> </td>
                                         <td>{item.price}</td>
-                                        <td><Quantity quantity={handleChangeQuantity}></Quantity> </td>
-                                        <td>{item.price * quantity}</td>
-                                        <td><Button variant='contained' color='warning' onClick={() => handleDeleteProduct(item)}>Xóa</Button> <Button variant='contained' color='primary'>Cập nhật</Button>  </td>
+                                        <td >
+                                            <div className="d-flex quantity">
+
+                                                <input className='input-quantity' value={item.quantity} disabled ></input>
+
+                                            </div>
+                                        </td>
+                                        <td>{item.price * item.quantity}</td>
+                                        <td><Button variant='contained' color='error' onClick={() => handleDeleteProduct(item)}>Xóa</Button> <Button variant='contained' color='primary'>Cập nhật</Button>  </td>
                                     </tr>
                                 )
                             })}
 
-
+                            <tr>
+                                <th ><Checkbox></Checkbox>Chọn tất cả({cart.length}) </th>
+                                <th ></th>
+                                <th ></th>
+                                <th ></th>
+                                <th >Tổng Thanh toán({0} sản phẩm) :</th>
+                                <th ><Button variant='contained' color='error'>Mua Hàng</Button></th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -22,3 +22,11 @@ table img {
 table th td {
     text-align: center;
 }
+
+.quantity {
+    margin: 15px 0px;
+}
+
+.input-quantity {
+    width: 20%;
+}
