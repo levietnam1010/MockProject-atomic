@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -11,7 +10,6 @@ import Cart from './components/pages/Cart/Cart';
 function App() {
   return (
     <div className="container-fluid">
-
 
       {/* <Home></Home> */}
       {/* <CategoryOverview></CategoryOverview> */}
