@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './Product.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, deleteProductFromCart } from '../../../redux/actions/action'
 import { useParams } from 'react-router-dom'
-import Quantity from '../../molecules/Quantity/Quantity'
+
 
 
 
@@ -32,20 +32,43 @@ const Product = (props) => {
 
 
     const [cartBtn, setCartBtn] = useState('ADD TO CART')
-    const productList = useSelector((state) => state.cart)
     const [quantity, setQuantity] = useState(1)
+    const dispatch = useDispatch()
+    const { id } = useParams();
 
-    const handleChangeQuantity = (quantity) => {
-        setQuantity(quantity)
+    const productList = useSelector((state) => state.cart)
+
+
+
+
+    useEffect(() => {
+        const inCart = productList.filter(product =>
+            product.id == id
+        )
+
+        if (inCart.length) {
+            setCartBtn("REMOVE")
+        }
+    }, [])
+
+
+
+
+    const inputChangedHandler = () => {
+
     }
 
 
 
-    const dispatch = useDispatch()
-
-    const handleCart = (product) => {
 
 
+
+
+    const productDetail = products_json.filter(item => item.id == id)
+    const product = productDetail[0]
+
+    const handleCart = (products) => {
+        const product = { id: products.id, nameProduct: products.nameProduct, price: products.price, idCategory: products.idCategory, imageProduct: products.imageProduct, quantity: quantity }
         if (cartBtn === 'ADD TO CART') {
             dispatch(addProductToCart(product))
             setCartBtn('REMOVE')
@@ -59,9 +82,8 @@ const Product = (props) => {
 
 
 
-    const { id } = useParams();
-    const productDetail = products_json.filter(item => item.id == id)
-    const product = productDetail[0]
+
+
 
 
 
@@ -147,7 +169,11 @@ const Product = (props) => {
 
                             <div>
                                 <span>Quantity</span>
-                                <Quantity quantity={handleChangeQuantity}></Quantity>
+                                <div className="d-flex quantity">
+                                    <button className='btn btn-light' onClick={() => setQuantity(quantity - 1)}><i className="fas fa-minus"></i></button>
+                                    <input className='input-quantity' value={quantity} onChange={() => inputChangedHandler()}></input>
+                                    <button className='btn btn-light' onClick={() => setQuantity(quantity + 1)}><i className="fas fa-plus"></i></button>
+                                </div>
                             </div>
 
 
