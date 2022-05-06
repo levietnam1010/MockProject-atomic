@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './Cart.css'
 import Checkbox from '@mui/material/Checkbox';
@@ -7,22 +7,110 @@ import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { deleteProductFromCart } from '../../../redux/actions/action'
-import Quantity from '../../molecules/Quantity/Quantity';
+
 const Cart = () => {
 
 
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
+    const [cartStore, setCartStore] = useState(cart)
+    const [selectAll, setSelectAll] = useState(false)
+    const [sumProductPay, setSumProductPay] = useState()
+    const [totalMoney, setTotalMoney] = useState(0)
+    const [selectItem, setSelectItem] = useState([])
+
+    useEffect(() => {
+        const tempSelect = []
+        cart.map(product => {
+            tempSelect.push({ id: product.id, select: false })
+
+        })
+        setSelectItem(tempSelect)
+    }, [])
 
 
 
-    const [quantity, setQuantity] = useState(1)
+
+    useEffect(() => {
+        const sum = selectItem.filter(item =>
+            item.select === true
+        )
+
+        let total = 0;
+
+        for (let i = 0; i < sum.length; i++) {
+            for (let j = 0; j < cart.length; j++) {
+                if (sum[i].id == cart[j].id && sum[i].select == true) {
+                    total += cart[j].price * cart[j].quantity
+                }
+            }
+
+        }
+        setTotalMoney(total)
+
+
+
+        setSumProductPay(sum.length)
+
+    }, [selectItem, cartStore])
+
 
 
 
     const handleDeleteProduct = (product) => {
         dispatch(deleteProductFromCart(product))
+
     }
+
+
+    const handleSelectAllProduct = () => {
+
+        let item = []
+        if (selectAll == false) {
+            item = selectItem.map(product => product.select == false
+                ? (
+                    { id: product.id, select: !product.select }
+                )
+                : { id: product.id, select: product.select }
+            )
+
+            setSelectAll(!selectAll)
+
+        } else {
+            item = selectItem.map(product => (product.select == true)
+                ?
+                { id: product.id, select: !product.select }
+                :
+                { id: product.id, select: product.select }
+
+
+            )
+
+
+            setSelectAll(!selectAll)
+
+        }
+        setSelectItem(item)
+
+    }
+
+    const handleSelectItem = (product) => {
+
+        const item = selectItem.map((item) => product.id == item.id
+            ? (
+                { id: item.id, select: !item.select }
+
+            )
+            :
+            { id: item.id, select: item.select }
+        )
+
+
+        setSelectItem(item)
+
+    }
+
+
 
 
 
@@ -62,7 +150,7 @@ const Cart = () => {
                             {cart && cart.map((item) => {
                                 return (
                                     <tr key={item.id}>
-                                        <th scope="row"><Checkbox></Checkbox></th>
+                                        <th scope="row"><Checkbox checked={(selectItem.filter(product => product.id == item.id)).select} onChange={() => handleSelectItem(item)}></Checkbox></th>
                                         <td> <img src={item.imageProduct}></img> <NavLink to={`/productID=${item.id}`}>{item.nameProduct}</NavLink> </td>
                                         <td>{item.price}</td>
                                         <td >
@@ -79,11 +167,12 @@ const Cart = () => {
                             })}
 
                             <tr>
-                                <th ><Checkbox></Checkbox>Chọn tất cả({cart.length}) </th>
-                                <th ></th>
-                                <th ></th>
-                                <th ></th>
-                                <th >Tổng Thanh toán({0} sản phẩm) :</th>
+                                <th colSpan={1}><Checkbox checked={selectAll} onChange={() => handleSelectAllProduct()}></Checkbox>{!selectAll ? 'Chọn tất cả' : 'Bỏ chọn tất cả'}({cart.length}) </th>
+
+
+                                <th></th>
+
+                                <th colSpan={2}>Tổng Thanh toán({sumProductPay} sản phẩm) : {totalMoney} vnđ </th>
                                 <th ><Button variant='contained' color='error'>Mua Hàng</Button></th>
                             </tr>
                         </tbody>
