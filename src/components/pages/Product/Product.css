@@ -5,6 +5,10 @@
     margin: 0px 20px;
 }
 
+.header {
+    background-color: red;
+}
+
 .img {
 
     width: 100%;

@@ -3,7 +3,7 @@
 }
 
 .category-div {
-    background-color: rgb(237, 247, 210);
+    background-color: rgb(242, 250, 220);
     height: 1000px;
 }
 
@@ -26,14 +26,11 @@
     margin: 10px;
     transition: all 0.1s ease;
     border-radius: 17px;
-    border: double red;
-    background-color: #a4b9d8;
+    border: red;
+    background-color: #f5f7d9;
 }
 
-.product img:hover {
-    transform: scale(1.02);
-    box-shadow: 5px 5px 10px rgba(1, 0, 0, 1);
-}
+
 
 .product img {
     margin-top: 50px;
