@@ -6,12 +6,12 @@ import { MenuItem, InputLabel, Select, FormControl } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 const products_json = [
-    { id: 1, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://projectrunway.com.vn/Uploads/images/th%E1%BB%9Di%20trang%20n%E1%BB%AF%20c%C3%B4ng%20s%E1%BB%9F/thoi-trang-cong-so-nu-cao-cap.jpg' },
-    { id: 2, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://danangsale.vn/uploads/images/quan-ao-thoi-trang-nu-tai-da-nang(26).jpg' },
-    { id: 3, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://salt.tikicdn.com/cache/w1200/ts/product/c7/4b/80/a7bcd31bde9bb4dac0d6938db01ebde0.jpg' },
-    { id: 4, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://cuongstore.vn/uploads/2/X/-/7/R/T4n-a_gu-thoi-trang-nam-2020-toi-gian-cung-duoc-nhieu-quy-ong-lua-chon.jpg' },
-    { id: 5, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://360boutique.vn/wp-content/uploads/2018/08/5-xu-huong-thoi-trang-nam-khong-the-bo-lo-trong-nam-nay-hinh-anh-1.jpg' },
-    { id: 6, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://file.hstatic.net/1000327709/file/thoi-trang-nam-mua-he-jpg__1__3f88f7a25d834102b589153754c1234f_grande.jpg' },
+    { id: 1, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://projectrunway.com.vn/Uploads/images/th%E1%BB%9Di%20trang%20n%E1%BB%AF%20c%C3%B4ng%20s%E1%BB%9F/thoi-trang-cong-so-nu-cao-cap.jpg' },
+    { id: 2, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://danangsale.vn/uploads/images/quan-ao-thoi-trang-nu-tai-da-nang(26).jpg' },
+    { id: 3, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://salt.tikicdn.com/cache/w1200/ts/product/c7/4b/80/a7bcd31bde9bb4dac0d6938db01ebde0.jpg' },
+    { id: 4, nameProduct: 'Áo giữ nhiệt nam dài tay có cổ cao', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://cuongstore.vn/uploads/2/X/-/7/R/T4n-a_gu-thoi-trang-nam-2020-toi-gian-cung-duoc-nhieu-quy-ong-lua-chon.jpg' },
+    { id: 5, nameProduct: 'Áo giữ nhiệt nam dài tay có cổ cao', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://360boutique.vn/wp-content/uploads/2018/08/5-xu-huong-thoi-trang-nam-khong-the-bo-lo-trong-nam-nay-hinh-anh-1.jpg' },
+    { id: 6, nameProduct: 'Áo giữ nhiệt nam dài tay có cổ cao', price: '200.000vnd', idCategory: 'cte002', imageProduct: 'https://file.hstatic.net/1000327709/file/thoi-trang-nam-mua-he-jpg__1__3f88f7a25d834102b589153754c1234f_grande.jpg' },
     { id: 7, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte003', imageProduct: 'https://cdnimg.vietnamplus.vn/uploaded/fsmsr/2019_04_08/mau_nhi_trong_thiet_ke_cua_lionel__photo_by_dai_ngo_team_11.jpg' },
     { id: 8, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte003', imageProduct: 'https://canifa.com/blog/wp-content/uploads/2016/09/thoi-trang-tre-em-650x434.jpeg' },
     { id: 9, nameProduct: 'abc', price: '200.000vnd', idCategory: 'cte004', imageProduct: 'https://cdn.tgdd.vn/Products/Images/7264/247107/dong-ho-nam-mvw-ms075-01-1.-600x600.jpg' },
@@ -56,13 +56,13 @@ const Category = (props) => {
 
 
     const handleDisplayHeart = () => {
-        console.log('display heart')
+
         setHideHeart(!hideHeart)
         setHeart(!heart)
     }
 
     const handleHideHeart = () => {
-        console.log('check hide')
+
         setHideHeart(!hideHeart)
         setHeart(!heart)
     }
@@ -148,7 +148,7 @@ const Category = (props) => {
 
                             {productsList.map(product => {
                                 return (
-                                    <div className='description col-sm-2 product' key={product.id} >
+                                    <div className='description col-sm-3 product' key={product.id} >
 
                                         <i className={'fas fa-heart heart'} hidden={heart} onClick={() => handleDisplayHeart()}></i>
                                         <i className={'fas fa-heart hide-heart'} hidden={hideHeart} onClick={() => handleHideHeart()}></i>
