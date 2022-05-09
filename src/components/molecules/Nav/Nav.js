@@ -77,13 +77,13 @@ const Nav = () => {
                                 <KeyboardArrowDownIcon onClick={() => handleDropdownMenu()}></KeyboardArrowDownIcon>
                                 {dropdown ? <div className="dropdown show">
                                     <div className='d-flex align-items-center'>  <img src='https://haycafe.vn/wp-content/uploads/2021/11/Anh-avatar-dep-chat-lam-hinh-dai-dien.jpg' className='avatar'></img>
-                                        <NavLink to='/user/account/profile'> <h6>Thông tin cá nhân</h6></NavLink> </div>
+                                        <NavLink to='/user/account/profile' className='link'> <h6>Thông tin cá nhân</h6></NavLink> </div>
                                     <div className='sub-form'>
                                         <div className='d-flex'><h6>Chế độ tối : <label class="switch">
                                             <input type="checkbox" />
                                             <span className="slider round"></span>
                                         </label></h6></div>
-                                        <div className='d-flex'><h6>Đăng xuất</h6></div>
+                                        <Link className='link' to='/login'> <div className='d-flex'><h6>Đăng xuất</h6></div></Link>
                                     </div>
                                 </div> : ''}
 
