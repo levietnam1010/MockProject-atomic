@@ -13,6 +13,15 @@ import { useParams } from 'react-router-dom'
 
 const Product = (props) => {
 
+
+    const sizeProduct = [
+        'L', 'M', 'S', 'XL'
+    ]
+
+    const colorProduct = [
+        'Black', 'Brown', 'White', 'Yellow'
+    ]
+
     const products_json = [
         { id: 1, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200000', idCategory: 'cte001', imageProduct: 'https://projectrunway.com.vn/Uploads/images/th%E1%BB%9Di%20trang%20n%E1%BB%AF%20c%C3%B4ng%20s%E1%BB%9F/thoi-trang-cong-so-nu-cao-cap.jpg' },
         { id: 2, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200000', idCategory: 'cte001', imageProduct: 'https://danangsale.vn/uploads/images/quan-ao-thoi-trang-nu-tai-da-nang(26).jpg' },
@@ -33,6 +42,10 @@ const Product = (props) => {
 
     const [cartBtn, setCartBtn] = useState('ADD TO CART')
     const [quantity, setQuantity] = useState(1)
+    const [activeSize, setActiveSize] = useState()
+    const [activeColor, setActiveColor] = useState()
+    const [error, setError] = useState([{ sizeError: '' }, { colorError: '' }])
+
     const dispatch = useDispatch()
     const { id } = useParams();
 
@@ -68,15 +81,25 @@ const Product = (props) => {
     const product = productDetail[0]
 
     const handleCart = (products) => {
-        const product = { id: products.id, nameProduct: products.nameProduct, price: products.price, idCategory: products.idCategory, imageProduct: products.imageProduct, quantity: quantity }
+        const product = { ...products, quantity: quantity, activeSize, activeColor }
         if (cartBtn === 'ADD TO CART') {
+
             dispatch(addProductToCart(product))
             setCartBtn('REMOVE')
         }
+
         else {
             dispatch(deleteProductFromCart(product))
             setCartBtn('ADD TO CART')
         }
+    }
+
+    const handleSelectSize = (size) => {
+        setActiveSize(size)
+    }
+
+    const handleSelectColor = (color) => {
+        setActiveColor(color)
     }
 
 
@@ -156,19 +179,29 @@ const Product = (props) => {
                                 <a href='#' style={{ float: 'right' }}>Size guide</a>
                             </div>
 
-                            <div className='d-flex'>
-                                <div>   <button type="button" className="btn btn-light btn-lg button-size">L</button> </div>
-                                <div>  <button type="button" className="btn btn-light btn-lg button-size">M</button></div>
-                                <div> <button type="button" className="btn btn-light btn-lg button-size">S</button></div>
-                                <div> <button type="button" className="btn btn-light btn-lg button-size">XL</button></div>
-                                <div> <button type="button" className="btn btn-light btn-lg button-size">XXL</button></div>
+                            <div>
+                                <div className='d-flex'>
+                                    {sizeProduct.map((size, index) => {
+                                        return (
+                                            <div key={index}><button type="button" className="btn btn-outline-primary button-size" onClick={() => handleSelectSize(size)}>{size}</button></div>
+                                        )
+                                    })}
+                                </div>
+
+                                <p>Vui lòng chọn kích thước sản phẩm!</p>
                             </div>
+
                             <div>
                                 <span>COLOR</span>
-                                <div className='d-flex'>
-                                    <button className='btn btn-light'>Black</button>
-                                    <button className='btn btn-light'>Brown</button>
+                                <div className='d-flex' role="group">
+                                    {colorProduct.map(color => {
+                                        return (
+                                            <button className='btn btn-outline-primary button-size' onClick={() => handleSelectColor(color)}>{color}</button>
+                                        )
+                                    })}
+
                                 </div>
+                                <p>Vui lòng chọn màu sản phẩm!</p>
                             </div>
 
                             <div>

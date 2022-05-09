@@ -1,0 +1,32 @@
+.side-menu {
+    position: fixed;
+    background-color: rgb(216, 210, 210);
+    width: 15%;
+    height: 110vh;
+}
+
+.top-section {
+    padding: 100px 40px
+}
+
+.sub-profile {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: inherit;
+    color: inherit;
+
+}
+
+.link :hover {
+    color: red;
+}
+
+.link li {
+    margin: 20px 10px;
+}
+
+.sub-item {
+    margin: 20px 0px;
+}

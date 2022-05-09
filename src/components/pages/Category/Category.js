@@ -21,6 +21,8 @@ const products_json = [
 
 ]
 
+
+
 const Category = (props) => {
     let { id } = useParams();
 
@@ -77,7 +79,7 @@ const Category = (props) => {
                 <div className="row">
                     <div className='col-sm-2'>
                         <div className='term'>
-                            <h5>Search Terms</h5>
+                            <h5>Từ khóa tìm kiếm</h5>
                         </div>
 
                         <div className='term'>
@@ -92,16 +94,16 @@ const Category = (props) => {
                         </div>
 
                         <div className='term' >
-                            <input className='form-control' placeholder='Add search term...' value={term} onChange={(e) => setTerm(e.target.value)}
+                            <input className='form-control' placeholder='Thêm từ khóa...' value={term} onChange={(e) => setTerm(e.target.value)}
                                 onKeyDown={(e) => handleAddSearchTerm(e)}></input>
                             <i className="fas fa-search icon-search" ></i>
 
-                            <button className='btn btn-danger' style={{ margin: '15px' }} onClick={(e) => setSearchTerm([])}>Clear all</button>
+                            <button className='btn btn-danger' style={{ margin: '15px' }} onClick={(e) => setSearchTerm([])}>Xóa</button>
 
                         </div>
 
                         <div className='term'>
-                            <h6>Category</h6>
+                            <h6>Theo danh mục</h6>
                             <div>
                                 <select className="form-select form-select-sm">
 
@@ -112,7 +114,7 @@ const Category = (props) => {
                             </div>
                         </div>
                         <div className='term d-fex'>
-                            <div> <h6>Color</h6>
+                            <div> <h6>Khoảng giá</h6>
                                 <div className='box red'></div>
                                 <div className='box green'></div>
                                 <div className='box blue'></div>
@@ -124,13 +126,13 @@ const Category = (props) => {
                                 <div className='box AliceBlue'></div>
                                 <div className='box Aqua'></div>
                             </div>
-                            <button className='btn btn-danger' style={{ margin: '15px' }}>Clear all</button>
+                            <button className='btn btn-danger' style={{ margin: '15px' }}>Xóa</button>
                         </div>
                     </div>
                     <div className='col-sm-10'>
                         <div className='row'>
                             <div className="d-flex justify-content-around top-head">
-                                <div> <h6>Results : <span style={{ color: 'red' }}> {productsList.length} products</span></h6>  </div>
+                                <div> <h6>Kết quả : <span style={{ color: 'red' }}> {productsList.length} sản phẩm</span></h6>  </div>
 
                                 <div> <i className="fas fa-align-justify"></i> <i className="fas fa-th"></i>
 
@@ -157,7 +159,7 @@ const Category = (props) => {
 
 
                                         <div className='description-child'>
-                                            <h6>  More color : </h6>
+                                            <h6>  Màu khác : </h6>
                                             <div className='box yellow'></div>
                                             <div className='box black'></div>
                                         </div>

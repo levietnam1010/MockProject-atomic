@@ -15,16 +15,10 @@ const Home = () => {
                 <Nav></Nav>
 
 
-                <div className='content-page' style={{ position: 'absolute', top: '10%', left: '18%', color: 'white', textAlign: 'center' }}>
-                    <h1 id='content' style={{ fontSize: '10vmin' }}>Crowd-Pleasers</h1>
-                    <p>Made by us.Loved by you.</p>
-
-                    <div>SHOP BEST-SELLERS</div>
-                </div>
                 <div style={{ position: 'absolute', bottom: '10%', left: '5%', color: '#CCF381', fontSize: '25px' }}>
-                    <p>Sign Up for 10% off your first order*</p>
+                    <p>Đăng nhập để nhận ngay ưu đãi <br /> giảm giá 10% cho đơn hàng đầu tiên*</p>
                     <i className="fas fa-sign-in-alt"></i>
-                    <Link to='/login' style={{ color: '#CCF381' }}>Sign up <span >NOW!!</span></Link>
+                    <Link to='/login' style={{ color: '#CCF381' }}>Đăng nhập ngay!!</Link>
                 </div>
 
             </div>

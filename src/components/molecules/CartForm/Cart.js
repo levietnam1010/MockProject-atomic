@@ -25,8 +25,8 @@ const Cart = () => {
                                 <tr>
 
                                     <td><img src={product.imageProduct}></img></td>
-                                    <td>{product.nameProduct}</td>
-                                    <td>{product.price}</td>
+                                    <td>{product.nameProduct.slice(0, 12).trim()}{product.nameProduct.length > 12 ? '...' : ''}</td>
+                                    <td>{product.price}vnđ</td>
                                 </tr>
                             )
                         })

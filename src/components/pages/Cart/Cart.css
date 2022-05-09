@@ -24,5 +24,6 @@ table img {
 }
 
 .input-quantity {
-    width: 20%;
+    max-width: 40px;
+
 }

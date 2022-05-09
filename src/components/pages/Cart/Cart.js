@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { deleteProductFromCart } from '../../../redux/actions/action'
+import { width } from '@mui/system';
 
 const Cart = () => {
 
@@ -141,6 +142,7 @@ const Cart = () => {
                                 <th >Sản Phẩm</th>
                                 <th >Đơn Giá</th>
                                 <th >Số Lượng</th>
+                                <th >Kích thước , Màu sắc </th>
                                 <th >Tổng Tiền</th>
                                 <th >Thao Tác</th>
                             </tr>
@@ -151,7 +153,7 @@ const Cart = () => {
                                 return (
                                     <tr key={item.id}>
                                         <th scope="row"><Checkbox checked={(selectItem.filter(product => product.id == item.id)).select} onChange={() => handleSelectItem(item)}></Checkbox></th>
-                                        <td> <img src={item.imageProduct}></img> <NavLink to={`/productID=${item.id}`}>{item.nameProduct}</NavLink> </td>
+                                        <td> <img src={item.imageProduct}></img> <NavLink to={`/productID=${item.id}`}>{item.nameProduct.slice(0, 15).trim()}{item.nameProduct.length > 15 ? '...' : ''}</NavLink> </td>
                                         <td>{item.price}</td>
                                         <td >
                                             <div className="d-flex quantity">
@@ -160,14 +162,16 @@ const Cart = () => {
 
                                             </div>
                                         </td>
+                                        <td> {item.activeSize} , {item.activeColor} </td>
                                         <td>{item.price * item.quantity}</td>
-                                        <td><Button variant='contained' color='error' onClick={() => handleDeleteProduct(item)}>Xóa</Button> <Button variant='contained' color='primary'>Cập nhật</Button>  </td>
+                                        <td><Button variant='contained' size='small' className='' color='error' onClick={() => handleDeleteProduct(item)}>Xóa</Button>
+                                            <Button variant='contained' size='small' color='primary'>Cập nhật</Button>  </td>
                                     </tr>
                                 )
                             })}
 
                             <tr>
-                                <th colSpan={1}><Checkbox checked={selectAll} onChange={() => handleSelectAllProduct()}></Checkbox>{!selectAll ? 'Chọn tất cả' : 'Bỏ chọn tất cả'}({cart.length}) </th>
+                                <th colSpan={2}><Checkbox checked={selectAll} onChange={() => handleSelectAllProduct()}></Checkbox>{!selectAll ? 'Chọn tất cả' : 'Bỏ chọn tất cả'}({cart.length}) </th>
 
 
                                 <th></th>

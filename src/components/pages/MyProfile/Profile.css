@@ -1,0 +1,15 @@
+.body {
+    background-color: white;
+    margin: 50px;
+    padding: 40px;
+}
+
+
+
+.table {
+    border: 0px;
+}
+
+.has-child-left {
+    margin: 20px 30px 40px 10px;
+}

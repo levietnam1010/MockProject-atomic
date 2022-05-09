@@ -183,6 +183,7 @@ const CategoryOverview = (props) => {
 
                                 </div>
                                 <div className="p-2 bd-highlight" style={{ fontSize: '30px' }}>
+
                                     <Pagination
                                         currentPage={currentPage}
                                         pagination={pagination}

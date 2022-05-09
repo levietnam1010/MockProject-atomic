@@ -6,9 +6,14 @@ import CategoryOverview from './components/pages/CategoryOverview/CategoryOvervi
 import Category from './components/pages/Category/Category';
 import Product from './components/pages/Product/Product';
 import Cart from './components/pages/Cart/Cart';
+import Profile from './components/pages/MyProfile/Profile';
+
+
+
 
 function App() {
   return (
+
     <div className="container-fluid">
 
       {/* <Home></Home> */}
@@ -22,9 +27,11 @@ function App() {
         <Route path={`/category/cid=:id`} element={<Category></Category>}></Route>
         <Route path='/productID=:id' element={<Product ></Product>} exact={true}></Route>
         <Route path='/cart' element={<Cart ></Cart>}></Route>
+        <Route path='/user/account/profile' element={<Profile></Profile>}></Route>
       </Routes>
 
     </div>
+
   );
 }
 
