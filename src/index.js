@@ -6,12 +6,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store/store';
 import { Provider } from 'react-redux';
+import Login from './components/pages/Login/Login';
+import SignUp from './components/pages/SignUp/SignUp';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
     <Router>
       <Provider store={store}>
         <App />

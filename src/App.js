@@ -6,11 +6,11 @@ import CategoryOverview from './components/pages/CategoryOverview/CategoryOvervi
 import Category from './components/pages/Category/Category';
 import Product from './components/pages/Product/Product';
 import Cart from './components/pages/Cart/Cart';
+import Login from './components/pages/Login/Login';
 
 function App() {
   return (
     <div className="container-fluid">
-
       {/* <Home></Home> */}
       {/* <CategoryOverview></CategoryOverview> */}
       {/* <Category></Category> */}
@@ -22,6 +22,7 @@ function App() {
         <Route path={`/category/cid=:id`} element={<Category></Category>}></Route>
         <Route path='/productID=:id' element={<Product ></Product>} exact={true}></Route>
         <Route path='/cart' element={<Cart ></Cart>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
 
     </div>

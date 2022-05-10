@@ -2,7 +2,7 @@
 
 
 import React from 'react'
-import { Routes, NavLink } from 'react-router-dom';
+import { Routes, NavLink, Router } from 'react-router-dom';
 import '../Nav/Nav.css'
 import Search from '../SearchForm/Search';
 import Cart from '../CartForm/Cart';
@@ -69,15 +69,10 @@ const Nav = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/signup">Sign up</NavLink>
                             </li>
-
-
-
-
                         </ul>
                     </div>
                 </div >
             </nav >
-
         </div >
     )
 
