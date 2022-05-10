@@ -6,12 +6,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store/store';
 import { Provider } from 'react-redux';
+import Footer from './components/molecules/Footer/Footer';
+import Nav from './components/molecules/Nav/Nav';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
     <Router>
       <Provider store={store}>
         <App />

@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-
 import Nav from '../../molecules/Nav/Nav'
 import './Home.css'
 import { Routes, Link, Route } from 'react-router-dom'
+import Footer from '../../molecules/Footer/Footer'
 
 const Home = () => {
 
@@ -38,7 +37,7 @@ const Home = () => {
                     <img alt='shopping' src='https://media.istockphoto.com/photos/young-women-with-shopping-bags-standing-on-the-street-picture-id1148923865?k=20&m=1148923865&s=612x612&w=0&h=ZHYJouMQbc2IBY-Drk7y-cMd3zvSAKGHywj8ny-KBqU='></img>
 
                     <div className='content'>
-                        <h4>The Curvy '90s Cheeky Jean</h4>
+                        <h4>The Curvy '90s Cheeky Jean'</h4>
                         Out favorite throwback jean-- <br></br> minus the waist gap.
                     </div>
 
@@ -50,9 +49,8 @@ const Home = () => {
                         A collection of premium organic pieces--<br></br>made for the track ahead.
                     </div>
                 </div>
+
             </div>
-
-
         </div>
     )
 }

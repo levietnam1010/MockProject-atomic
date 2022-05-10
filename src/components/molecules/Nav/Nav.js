@@ -1,9 +1,7 @@
 
-
-
 import React, { useState } from 'react'
 import { Routes, NavLink, Link } from 'react-router-dom';
-import '../Nav/Nav.css'
+import '../Nav/Nav.css';
 import Search from '../SearchForm/Search';
 import Cart from '../CartForm/Cart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -86,21 +84,11 @@ const Nav = () => {
                                         <Link className='link' to='/login'> <div className='d-flex'><h6>Đăng xuất</h6></div></Link>
                                     </div>
                                 </div> : ''}
-
-
-
                             </li>
-
-
-
-
-
-
                         </ul>
                     </div>
                 </div >
             </nav >
-
         </div >
     )
 

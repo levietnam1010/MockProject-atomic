@@ -8,14 +8,12 @@ import Product from './components/pages/Product/Product';
 import Cart from './components/pages/Cart/Cart';
 import Profile from './components/pages/MyProfile/Profile';
 import Address from './components/pages/MyProfile/Address';
-
-
+import Login from './components/pages/Login/Login';
+import SignUp from './components/pages/SignUp/SignUp';
 
 function App() {
   return (
-
     <>
-
       {/* <Home></Home> */}
       {/* <CategoryOverview></CategoryOverview> */}
       {/* <Category></Category> */}
@@ -29,9 +27,10 @@ function App() {
         <Route path='/cart' element={<Cart ></Cart>}></Route>
         <Route path='/user/account/profile' element={<Profile></Profile>}></Route>
         <Route path='/user/account/address' element={<Address></Address>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signup' element={<SignUp></SignUp>}></Route>
+
       </Routes>
-
-
     </>
   );
 }
