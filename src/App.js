@@ -7,14 +7,14 @@ import Category from './components/pages/Category/Category';
 import Product from './components/pages/Product/Product';
 import Cart from './components/pages/Cart/Cart';
 import Profile from './components/pages/MyProfile/Profile';
-
+import Address from './components/pages/MyProfile/Address';
 
 
 
 function App() {
   return (
 
-    <div className="container-fluid">
+    <>
 
       {/* <Home></Home> */}
       {/* <CategoryOverview></CategoryOverview> */}
@@ -28,10 +28,11 @@ function App() {
         <Route path='/productID=:id' element={<Product ></Product>} exact={true}></Route>
         <Route path='/cart' element={<Cart ></Cart>}></Route>
         <Route path='/user/account/profile' element={<Profile></Profile>}></Route>
+        <Route path='/user/account/address' element={<Address></Address>}></Route>
       </Routes>
 
-    </div>
 
+    </>
   );
 }
 

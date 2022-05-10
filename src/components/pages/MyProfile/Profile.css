@@ -1,7 +1,12 @@
 .body {
     background-color: white;
-    margin: 50px;
-    padding: 40px;
+    margin: 30px;
+    padding: 20px;
+}
+
+.main {
+    background-color: rgb(247, 238, 226);
+
 }
 
 
@@ -10,6 +15,19 @@
     border: 0px;
 }
 
+
+
 .has-child-left {
     margin: 20px 30px 40px 10px;
+}
+
+.row {
+    margin: 20px 0px;
+}
+
+.avatar img {
+    width: 20vmin;
+    height: 20vmin;
+    border-radius: 50%;
+    margin-left: 100px;
 }

@@ -2,13 +2,12 @@ const cart = [];
 
 
 
-const selected = []
+
 const carts = (state = cart, action) => {
     switch (action.type) {
 
         case "ADDPRODUCT":
 
-            //can not use function find  , convert to filter.length and check
             const inCart = cart.find(product =>
                 product.id == action.payload.id ? true : false
 
@@ -33,7 +32,7 @@ const carts = (state = cart, action) => {
                     product.id !== action.payload.id
                 )
 
-                currentProductNext = { id: currentProduct.id, nameProduct: currentProduct.nameProduct, price: currentProduct.price, idCategory: currentProduct.idCategory, imageProduct: currentProduct.imageProduct, quantity: currentProduct.quantity + action.payload.quantity }
+                currentProductNext = { ...currentProduct, quantity: currentProduct.quantity + action.payload.quantity }
                 return [
                     ...state, currentProductNext
                 ]
