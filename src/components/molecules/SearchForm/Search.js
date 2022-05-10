@@ -10,7 +10,7 @@ const Search = () => {
 
                     <i className="fas fa-search icon"></i>
 
-                    <input className="form-control search" type="search" placeholder="Search" />
+                    <input className="form-control search" placeholder="Search" />
                 </div>
             </form>
         </div>
