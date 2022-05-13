@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import Footer from '../../molecules/Footer/Footer';
 
 
 const CategoryOverview = (props) => {
@@ -213,6 +214,9 @@ const CategoryOverview = (props) => {
                     </div>
                 </div>
 
+            </div>
+            <div>
+                <Footer />
             </div>
 
         </div >

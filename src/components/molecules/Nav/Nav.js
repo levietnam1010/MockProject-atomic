@@ -25,10 +25,10 @@ const Nav = () => {
                                 <NavLink className="nav-link" to="/">Trang chủ</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="#">Thời trang nữ</NavLink>
+                                <NavLink className="nav-link active" to="/category/cid=cte001">Thời trang nữ</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="#">Thời trang nam</NavLink>
+                                <NavLink className="nav-link active" to="/category/cid=cte002">Thời trang nam</NavLink>
                             </li>
 
                             <li className="nav-item">

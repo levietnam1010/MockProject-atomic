@@ -5,6 +5,7 @@ import './Category.css'
 import { MenuItem, InputLabel, Select, FormControl } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Footer from '../../molecules/Footer/Footer'
 const products_json = [
     { id: 1, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://projectrunway.com.vn/Uploads/images/th%E1%BB%9Di%20trang%20n%E1%BB%AF%20c%C3%B4ng%20s%E1%BB%9F/thoi-trang-cong-so-nu-cao-cap.jpg' },
     { id: 2, nameProduct: 'Áo thun tay lỡ Unisex Yinxx', price: '200.000vnd', idCategory: 'cte001', imageProduct: 'https://danangsale.vn/uploads/images/quan-ao-thoi-trang-nu-tai-da-nang(26).jpg' },
@@ -178,6 +179,7 @@ const Category = (props) => {
 
 
             </div>
+
         </>
     )
 }
