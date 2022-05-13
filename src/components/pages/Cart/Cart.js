@@ -13,7 +13,7 @@ const Cart = () => {
 
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
-    const [cartStore, setCartStore] = useState(cart)
+
     const [selectAll, setSelectAll] = useState(false)
     const [sumProductPay, setSumProductPay] = useState()
     const [totalMoney, setTotalMoney] = useState(0)
@@ -26,6 +26,7 @@ const Cart = () => {
 
         })
         setSelectItem(tempSelect)
+
     }, [])
 
 
@@ -47,19 +48,17 @@ const Cart = () => {
 
         }
         setTotalMoney(total)
-
-
-
         setSumProductPay(sum.length)
 
-    }, [selectItem, cartStore])
+    }, [selectItem, cart])
 
 
 
 
     const handleDeleteProduct = (product) => {
         dispatch(deleteProductFromCart(product))
-
+        const tempSelect = selectItem.filter((item) => item.id !== product.id)
+        setSelectItem(tempSelect)
     }
 
 
@@ -125,6 +124,7 @@ const Cart = () => {
 
 
 
+
     return (
         <div>
             <div className="header">
@@ -137,7 +137,7 @@ const Cart = () => {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th ><Checkbox></Checkbox> </th>
+                                <th > </th>
                                 <th >Sản Phẩm</th>
                                 <th >Đơn Giá</th>
                                 <th >Số Lượng</th>
@@ -151,7 +151,7 @@ const Cart = () => {
                             {cart && cart.map((item) => {
                                 return (
                                     <tr key={item.id}>
-                                        <th scope="row"><Checkbox checked={(selectItem.filter(product => product.id == item.id)).select} onChange={() => handleSelectItem(item)}></Checkbox></th>
+                                        <th scope="row"><Checkbox checked={selectItem.filter(product => (product.id == item.id)).select} onChange={() => handleSelectItem(item)}></Checkbox></th>
                                         <td> <img src={item.imageProduct}></img> <NavLink to={`/productID=${item.id}`}>{item.nameProduct.slice(0, 15).trim()}{item.nameProduct.length > 15 ? '...' : ''}</NavLink> </td>
                                         <td>{item.price}</td>
                                         <td >

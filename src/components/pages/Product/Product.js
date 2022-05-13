@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, deleteProductFromCart } from '../../../redux/actions/action'
 import { useParams } from 'react-router-dom'
-
+import { Link, NavLink } from 'react-router-dom'
 
 
 
@@ -194,9 +194,9 @@ const Product = (props) => {
                             <div>
                                 <span>COLOR</span>
                                 <div className='d-flex' role="group">
-                                    {colorProduct.map(color => {
+                                    {colorProduct.map((color, index) => {
                                         return (
-                                            <button className='btn btn-outline-primary button-size' onClick={() => handleSelectColor(color)}>{color}</button>
+                                            <button key={index} className='btn btn-outline-primary button-size' onClick={() => handleSelectColor(color)}>{color}</button>
                                         )
                                     })}
 
@@ -215,7 +215,7 @@ const Product = (props) => {
 
 
                             <div className='d-flex'>
-                                <button className='btn btn-primary button'><i className="fas fa-dollar-sign"></i> BUY NOW</button>
+                                <button className='btn btn-primary button' ><i className="fas fa-dollar-sign"></i> MUA NGAY</button>
                                 <button className='btn btn-outline-warning button' onClick={() => handleCart(product)}><i className="fas fa-shopping-cart"></i>{cartBtn}</button>
                             </div>
 
