@@ -44,7 +44,7 @@ const Product = (props) => {
     const [quantity, setQuantity] = useState(1)
     const [activeSize, setActiveSize] = useState()
     const [activeColor, setActiveColor] = useState()
-    const [error, setError] = useState([{ sizeError: '' }, { colorError: '' }])
+
 
     const dispatch = useDispatch()
     const { id } = useParams();

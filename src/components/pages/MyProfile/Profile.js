@@ -38,7 +38,7 @@ const Profile = () => {
                                         <div className='col-sm-8 has-child-left'>
                                             <div className='row'>
 
-                                                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Tên Đăng Nhập :</label>
+                                                <label className="col-sm-2 col-form-label col-form-label-sm">Tên Đăng Nhập :</label>
                                                 <div className="col-sm-10">
                                                     <input type="text" className="form-control" value={'namvietle1010'} disabled />
                                                 </div>
@@ -46,14 +46,14 @@ const Profile = () => {
 
                                             <div className='row'>
 
-                                                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Tên :</label>
+                                                <label className="col-sm-2 col-form-label col-form-label-sm">Tên :</label>
                                                 <div className="col-sm-10">
                                                     <input type="email" className="form-control" />
                                                 </div>
                                             </div>
                                             <div className='row'>
 
-                                                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Email :</label>
+                                                <label className="col-sm-2 col-form-label col-form-label-sm">Email :</label>
                                                 <div className="col-sm-10">
                                                     <input type="email" className="form-control" />
                                                 </div>
@@ -61,10 +61,10 @@ const Profile = () => {
 
                                             <div className='row'>
 
-                                                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Giới tính :</label>
-                                                <div class="col-sm-10">
+                                                <label className="col-sm-2 col-form-label col-form-label-sm">Giới tính :</label>
+                                                <div className="col-sm-10">
                                                     <div>
-                                                        <div class="form-check form-check-inline">
+                                                        <div className="form-check form-check-inline">
                                                             <input className="form-check-input" type="radio" value="option1" />
                                                             <label className="form-check-label">Nam</label>
                                                         </div>
@@ -90,7 +90,7 @@ const Profile = () => {
                                             <div>
                                                 <div className='row'>
 
-                                                    <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                    <label className="col-sm-2 col-form-label col-form-label-sm"></label>
                                                     <div className="col-sm-2">
                                                         <button className='btn btn-primary btn-lg'>Lưu</button>
                                                     </div>

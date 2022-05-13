@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { deleteProductFromCart } from '../../../redux/actions/action'
-import { width } from '@mui/system';
 
 const Cart = () => {
 

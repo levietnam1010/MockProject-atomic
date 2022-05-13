@@ -14,3 +14,23 @@ export const deleteProductFromCart = (product) => {
     }
 }
 
+
+export const addAddressUser = (address) => {
+
+    return {
+        type: "ADD_ADDRESS_USER",
+        payload: address
+    }
+}
+
+export const setDefaultAddress = (address) => {
+
+    return {
+        type: "SET_DEFAULT_ADDRESS",
+        payload: address
+    }
+}
+
+
+
+
