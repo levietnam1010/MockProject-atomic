@@ -3,7 +3,6 @@ import React from 'react'
 import Nav from '../../molecules/Nav/Nav'
 import './Home.css'
 import { Routes, Link, Route } from 'react-router-dom'
-import Footer from '../../molecules/Footer/Footer'
 
 const Home = () => {
 
@@ -49,7 +48,6 @@ const Home = () => {
                         A collection of premium organic pieces--<br></br>made for the track ahead.
                     </div>
                 </div>
-
             </div>
         </div>
     )

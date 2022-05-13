@@ -19,7 +19,6 @@ import GoogleIcon from '@mui/icons-material/Google';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Divider from '@mui/material/Divider';
 import { Link as LinkRouter } from "react-router-dom";
-import FooterLayout from '../../molecules/Footer/Footer';
 import Footer from "../../molecules/Footer/Footer";
 
 const theme = createTheme();
@@ -30,42 +29,36 @@ export default function SignIn() {
     const [errEmail, setErrEmail] = useState('');
     const [errPassword, setErrPassword] = useState('');
 
-    const validate = () => {
-        let isValid = true;
-        const patt = '/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/';
+    const validation = () => {
         if (email === '') {
-            isValid = false;
-            setErrEmail('Required');
-        } else if (!(patt.test(email))) {
-            isValid = false;
-            setErrEmail('Invalid email');
-        } else if (password === '') {
-            isValid = false;
-            setErrEmail('Required');
+            setErrEmail('This field is required');
+        } else if (!(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/).test(email)) {
+            setErrEmail('Email is not valid');
         } else {
             setErrEmail('');
         }
 
-        return isValid;
+        if (password === '') {
+            setErrPassword('This field is required');
+        } else {
+            setErrPassword('');
+        }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        if (validate()) {
-            alert('ok');
-            console.log({
-                email: data.get('email'),
-                password: data.get('password'),
-            });
-        }
+
     };
+
+
+    React.useEffect(() => {
+        validation();
+    })
 
     return (
         <>
             <div className='container-fluid main-container'>
                 <Nav></Nav>
-
             </div>
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
@@ -92,8 +85,8 @@ export default function SignIn() {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                // value={email}
                                 autoComplete="email"
+                                onChange={(e) => setEmail(e.currentTarget.value)}
                                 autoFocus
                                 helperText={errEmail}
                             />
@@ -105,8 +98,8 @@ export default function SignIn() {
                                 label="Password"
                                 type="password"
                                 id="password"
-                                // value={password}
                                 autoComplete="current-password"
+                                onChange={(e) => setPassword(e.currentTarget.value)}
                                 helperText={errPassword}
                             />
                             <FormControlLabel
